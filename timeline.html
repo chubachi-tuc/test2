@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>横長年表タイムライン</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+
+    .timeline-container {
+      overflow-x: auto;
+      white-space: nowrap;
+      border-top: 2px solid #333;
+      padding: 20px 0;
+    }
+
+    .timeline-year {
+      display: inline-block;
+      width: 150px;
+      text-align: center;
+      vertical-align: top;
+      margin-right: 10px;
+    }
+
+    .year-label {
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+    }
+
+    .event {
+      font-size: 0.9em;
+      margin: 4px 0;
+    }
+
+    .category-japan {
+      color: #e91e63;
+    }
+
+    .category-usa {
+      color: #2196f3;
+    }
+
+    .category-china {
+      color: #4caf50;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>横長年表タイムライン</h2>
+  <div class="timeline-container">
+    <div class="timeline-year">
+      <div class="year-label">1900年</div>
+      <div class="event category-japan">明治時代</div>
+      <div class="event category-usa">工業化進展</div>
+      <div class="event category-china">清朝末期</div>
+    </div>
+
+    <div class="timeline-year">
+      <div class="year-label">1945年</div>
+      <div class="event category-japan">終戦・GHQ統治</div>
+      <div class="event category-usa">WWII終結</div>
+      <div class="event category-china">抗日戦争勝利</div>
+    </div>
+
+    <div class="timeline-year">
+      <div class="year-label">1970年</div>
+      <div class="event category-japan">大阪万博</div>
+      <div class="event category-usa">アポロ計画</div>
+      <div class="event category-china">文化大革命</div>
+    </div>
+
+    <div class="timeline-year">
+      <div class="year-label">2000年</div>
+      <div class="event category-japan">IT革命</div>
+      <div class="event category-usa">ドットコムバブル崩壊</div>
+      <div class="event category-china">経済成長</div>
+    </div>
+
+    <div class="timeline-year">
+      <div class="year-label">2020年</div>
+      <div class="event category-japan">コロナ禍</div>
+      <div class="event category-usa">大統領選</div>
+      <div class="event category-china">ゼロコロナ政策</div>
+    </div>
+  </div>
+
+</body>
+</html>

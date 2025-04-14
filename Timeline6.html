@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Frappe Gantt サンプル</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.6.0/frappe-gantt.min.css">
+    <style>
+        #gantt-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+        #gantt {
+            height: 400px;
+            /* 明示的に十分な幅を設定 */
+            width: 1200px;
+        }
+        
+        /* ガントチャートのバーのスタイル調整 */
+        .gantt .bar-wrapper {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gantt-container">
+        <div id="gantt"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.6.0/frappe-gantt.min.js"></script>
+    <script>
+        const tasks = [
+            {
+                id: 'Task 1',
+                name: '企画',
+                start: '2023-10-01',
+                end: '2023-10-15',
+                progress: 80,
+            },
+            {
+                id: 'Task 2',
+                name: '開発',
+                start: '2023-10-15',
+                end: '2023-11-15',
+                progress: 50,
+            },
+            {
+                id: 'Task 3',
+                name: 'テスト',
+                start: '2023-11-15',
+                end: '2023-12-15',
+                progress: 20,
+            },
+            {
+                id: 'Task 4',
+                name: 'リリース',
+                start: '2023-12-15',
+                end: '2024-01-15',
+                progress: 0,
+            },
+            {
+                id: 'Task 5',
+                name: '非常に長いタスク名',
+                start: '2024-01-15',
+                end: '2024-03-15',
+                progress: 0,
+            }
+        ];
+        
+        // 現在の日付を基準に表示期間を調整
+        let today = new Date();
+        let startDate = new Date('2023-09-01');
+        let endDate = new Date('2024-04-15');
+        
+        const gantt = new Gantt('#gantt', tasks, {
+            viewMode: 'Quarter', // Quarter, Month, Weekなどのオプションがあります
+            header_height: 50,
+            column_width: 30, // 列幅を調整してコンパクトに
+            step: 24, // 1日単位の表示
+            view_modes: ['Quarter', 'Month', 'Week', 'Day'],
+            bar_height: 20,
+            bar_corner_radius: 3,
+            arrow_curve: 5,
+            padding: 18,
+            date_format: 'YYYY-MM-DD',
+            language: 'ja', // 日本語表示
+            custom_popup_html: task => {
+                // ポップアップ表示をカスタマイズ
+                const dateFormat = date => {
+                    const d = new Date(date);
+                    return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+                };
+                return `
+                    <div class="details-container">
+                        <h5>${task.name}</h5>
+                        <p>期間: ${dateFormat(task.start)} ~ ${dateFormat(task.end)}</p>
+                        <p>進捗: ${task.progress}%</p>
+                    </div>
+                `;
+            },
+            on_click: (task) => {
+                console.log(task);
+            },
+            on_date_change: (task, start, end) => {
+                console.log(task, start, end);
+            },
+            on_progress_change: (task, progress) => {
+                console.log(task, progress);
+            },
+            on_view_change: (mode) => {
+                console.log(mode);
+            }
+        });
+        
+        // 初期表示を設定
+        gantt.change_view_mode('Quarter');
+        
+        // 表示範囲を全タスクが見えるように設定
+        gantt.refresh(startDate, endDate);
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Timeline JSで作成した横長年表</title>
+  <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #timeline-embed {
+      width: 100%;
+      height: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="timeline-embed"></div>
+
+  <script>
+    window.timeline = new TL.Timeline('timeline-embed',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSu0nQWKDKPq2dyJoX1v5PYDfTcr_rrN4KV5CGqHRWjgnWaXqzFiXbm2ym8Z2NFxSTvlTuoyMMLdUnF/pubhtml');
+  </script>
+
+</body>
+</html>

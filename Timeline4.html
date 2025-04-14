@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Timeline JS + jQuery インタラクティブ年表</title>
+  <!-- jQuery の読み込み -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Timeline JS のライブラリとスタイル（直接読み込み） -->
+  <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline-min.js"></script>
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    #timeline-embed {
+      width: 100%;
+      height: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="timeline-embed"></div>
+
+  <script>
+    // DOMが完全に読み込まれてから初期化する
+    $(document).ready(function(){
+      // ※ 下記URLは「/d/【スプレッドシートID】/pubhtml」形式の正しいものに置き換えてください。
+      var spreadsheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTGJk6oAcRLU8-qsG6OyKN1als67WhOX-RL9aCGEJJz-WDGT-a4opQDPZ5RcwNNcwejtXz98Hlbuf3k/pubhtml';
+
+      // Timeline JS の初期化
+      if (typeof TL !== 'undefined' && TL.Timeline) {
+        window.timeline = new TL.Timeline('timeline-embed', spreadsheetURL);
+      } else {
+        console.error("Timeline JS ライブラリが読み込まれていません");
+      }
+    });
+  </script>
+
+</body>
+</html>
