@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>高等学校情報科での学びに関する調査および情報プレースメントテスト</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+        a {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #007acc;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        a:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <h1>高等学校情報科での学びに関する調査および情報プレースメントテスト</h1>
+    <p id="link-container">リンクを読み込み中...</p>
+
+    <script>
+        const links = ['https://docs.google.com/forms/d/e/1FAIpQLSd8V9msWAxIRNT-CeT1O8qm_QenDXoYEadpFAetI7c1PDK6cg/viewform', 'https://docs.google.com/forms/d/e/1FAIpQLScPy-eoUKwubI3I--hHFgGXLNPLcHOnSHfuM1K6LT0Xp_Sx6A/viewform', 'https://docs.google.com/forms/d/e/1FAIpQLSfbS93vSrXcgNEoVcBTS7jqXh8hGq3Im74CRA_drY8eTObnSQ/viewform', 'https://docs.google.com/forms/d/e/1FAIpQLSelNzpiM1d6J7UYnPyT83VIrfWOTSXLGvHozatOj4TiFsJnKA/viewform', 'https://docs.google.com/forms/d/e/1FAIpQLSfXs9ucB3SVgxLdrHKuwdtvZIFIniTZFSgYoK3vTou_I4z5EQ/viewform'];
+        const randomIndex = Math.floor(Math.random() * links.length);
+        const selectedLink = links[randomIndex];
+        document.getElementById("link-container").innerHTML =
+            '<a href="' + selectedLink + '">スタート</a>';
+    </script>
+</body>
+</html>
